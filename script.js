@@ -84,13 +84,30 @@ function optionA() {
 }
 function optionB() {
   //If input is a full name: Find the first name
+  let trimmedinput = input.trim();
+  let firstspace = trimmedinput.indexOf(" ");
+  let firstname = trimmedinput.substring(0, firstspace);
+  document.querySelector("#output").value = firstname;
+  console.log(firstname);
 }
 function optionC() {
   //If input is a full name: Find the length of the first name
+  let trimmedinput = input.trim();
+  let firstspace = trimmedinput.indexOf(" ");
+  let firstname = trimmedinput.substring(0, firstspace);
+  let lenght = firstname.length;
+  document.querySelector("#output").value = lenght;
+  console.log(lenght);
 }
 function optionD() {
   //If input is a full name: Find the middle name start and end position,
   //and the middle name itself in a full name string
+  let trimmedinput = input.trim();
+  let firstspace = trimmedinput.indexOf(" ") + 1;
+  let secondspace = trimmedinput.indexOf(" ", firstspace + 1);
+  console.log(firstspace, secondspace);
+  let middlename = trimmedinput.substring(firstspace, secondspace);
+  document.querySelector("#output").value = middlename;
 }
 function optionE() {
   //If input is a filename: Check if a filename is .png or .jpg
