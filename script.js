@@ -88,7 +88,7 @@ function optionB() {
   let firstspace = trimmedinput.indexOf(" ");
   let firstname = trimmedinput.substring(0, firstspace);
   document.querySelector("#output").value = firstname;
-  console.log(firstname);
+  console.log(`_${firstname}_`);
 }
 function optionC() {
   //If input is a full name: Find the length of the first name
@@ -104,20 +104,47 @@ function optionD() {
   //and the middle name itself in a full name string
   let trimmedinput = input.trim();
   let firstspace = trimmedinput.indexOf(" ") + 1;
-  let secondspace = trimmedinput.indexOf(" ", firstspace + 1);
+  let secondspace = trimmedinput.lastIndexOf(" ");
   console.log(firstspace, secondspace);
   let middlename = trimmedinput.substring(firstspace, secondspace);
-  document.querySelector("#output").value = middlename;
+  document.querySelector("#output").value = `Middlename: ${middlename}. Position: ${firstspace},${secondspace}`;
 }
 function optionE() {
   //If input is a filename: Check if a filename is .png or .jpg
+  if (input.endsWith(".jpg")) {
+    document.querySelector("#output").value = "jpg file";
+  } else if (input.endsWith(".png")) {
+    document.querySelector("#output").value = "png file";
+  } else {
+    document.querySelector("#output").value = "neither jpg or png file";
+  }
 }
 function optionF() {
   //If input is a password: Hide a password with the correct number of *s
+  const inputlenght = input.length;
+  const stars = input.slice(inputlenght).padStart(inputlenght, "*");
+  document.querySelector("#output").value = stars;
 }
 function optionG() {
   //With any input: Make the third character uppercase
+  const thirdcharacter = input.substring(2, 3);
+  const beginning = input.substring(0, 2);
+  const end = input.substring(3);
+  const editthird = thirdcharacter.toUpperCase();
+  document.querySelector("#output").value = beginning + editthird + end;
 }
 function optionH() {
   //With any input: Make a character uppercase, if it follows a space or a hyphen
+  const word = input.split(/[- ]+/);
+  let fullinput = "";
+  word.forEach((element) => {
+    let firstletter = element.substring(0, 1);
+    let editfirst = firstletter.toUpperCase();
+    let rest = element.substring(1);
+    fullinput = fullinput + editfirst + rest + " ";
+    // fullinput.concat(editfirst, rest, " ");
+  });
+
+  const trimmedfullinput = fullinput.trim();
+  document.querySelector("#output").value = trimmedfullinput;
 }
